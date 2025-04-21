@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.18</version> <!-- Updated to latest 2.7.x which is LTS -->
+        <version>2.7.18</version>
         <relativePath/>
     </parent>
 
@@ -24,8 +24,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <!-- Explicit versions for vulnerable dependencies -->
-        <thymeleaf.version>3.1.2.RELEASE</thymeleaf.version>
+        <!-- Thymeleaf version compatible with Spring Boot 2.7.18 -->
+        <thymeleaf.version>3.0.15.RELEASE</thymeleaf.version>
+        <thymeleaf-layout-dialect.version>2.5.3</thymeleaf-layout-dialect.version>
+        <!-- SnakeYAML version -->
         <snakeyaml.version>2.0</snakeyaml.version>
     </properties>
 
@@ -54,11 +56,11 @@
             </exclusions>
         </dependency>
 
-        <!-- Thymeleaf with explicit version -->
+        <!-- Thymeleaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
-            <version>${thymeleaf.version}</version>
+            <!-- Version is managed by parent POM -->
         </dependency>
 
         <!-- Testing -->
@@ -79,26 +81,25 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
-            <version>2.15.3</version> <!-- Latest stable version -->
+            <version>2.13.4.2</version>
         </dependency>
 
         <!-- Logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.4.14</version> <!-- Latest stable version -->
+            <version>1.2.13</version>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
-            <version>1.4.14</version>
+            <version>1.2.13</version>
         </dependency>
 
-        <!-- Tomcat Embedded -->
+        <!-- Tomcat Embedded - version managed by Spring Boot parent -->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
-            <version>10.1.18</version> <!-- Latest stable version -->
         </dependency>
 
         <!-- Explicit snakeyaml dependency with secure version -->
@@ -122,7 +123,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version> <!-- Updated version -->
+                <version>3.8.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -133,7 +134,7 @@
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
-                <version>3.11.0.3922</version> <!-- Updated version -->
+                <version>3.9.1.2184</version>
             </plugin>
 
             <!-- OWASP Dependency Check -->
